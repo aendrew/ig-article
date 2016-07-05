@@ -14,7 +14,7 @@
 	"demos": [
 		{
 			"name": "article",
-			"template": "demos/src/index.html",
+			"template": "demos/src/index.mustache",
 			"expanded": true,
 			"description": ""
 		}
