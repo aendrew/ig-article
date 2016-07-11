@@ -1,0 +1,24 @@
+{
+  "name": "ig-footer",
+  "homepage": "http://github.com/financial-times/ig-article",
+  "authors": [
+    "Ændrew Rininsland <andrew.rininsland@ft.com>"
+  ],
+  "description": "Interactive Graphics header variant",
+  "main": "ig-footer.component.ts",
+  "keywords": [
+    "ft-interactive"
+  ],
+  "license": "none",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "o-footer": "^5.0.1"
+  }
+}

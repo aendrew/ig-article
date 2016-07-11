@@ -1,0 +1,939 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <ig-header></ig-header>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+<link rel="import" href="dist/o-header-styles.html">
+<dom-module id="ig-header">
+  <template>
+    <style include="o-header-styles"></style>
+    <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <template is="dom-if" if="[[header]]">
+      <header class="o-header" data-o-component="o-header" data-o-header--no-js="">
+
+        <div class="o-header__row o-header__anon">
+          <ul class="o-header__anon-list">
+            <li class="o-header__anon-item">
+              <a class="o-header__anon-link" href="#">Subscribe</a>
+            </li>
+            <li class="o-header__anon-item">
+              <a class="o-header__anon-link" href="#">Sign In</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="o-header__row o-header__top">
+          <div class="o-header__container">
+            <div class="o-header__top-wrapper">
+              <div class="o-header__top-column o-header__top-column--left">
+                <a href="#o-header-search" class="o-header__top-link o-header__top-link--search" aria-controls="o-header-search-js">
+                  <span class="o-header__top-link-label">Search</span>
+                </a>
+              </div>
+              <div class="o-header__top-column o-header__top-column--center">
+                <a class="o-header__top-logo" href="/" title="Go to Financial Times homepage">
+                  <span class="o-header__visually-hidden">Financial Times</span>
+                </a>
+              </div>
+              <div class="o-header__top-column o-header__top-column--right" role="navigation" aria-label="Account and personalisation links">
+                <a class="o-header__top-link o-header__top-link--myft" href="/myft">
+                  <span class="o-header__visually-hidden">myFT</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- To support both core and enhanced, duplicating the search row is necessary to avoid it flashing in enhanced -->
+        <!-- Pick only one of the two <div> if you don't need to support both core and enhanced -->
+        <div id="o-header-search" class="o-header__row o-header__search o--if-no-js" role="search">
+          <div class="o-header__container">
+            <form class="o-header__search-form" action="/search" role="search" aria-label="Site search">
+              <label class="o-header__visually-hidden" for="o-header-search-term">Search the <abbr title="Financial Times">FT</abbr></label>
+              <input class="o-header__search-term" id="o-header-search-term" name="q" type="text" placeholder="Search the FT"></input>
+              <button class="o-header__search-submit" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+        <div id="o-header-search-js" class="o-header__row o-header__search" role="search" data-o-header-search="">
+          <div class="o-header__container">
+            <form class="o-header__search-form" action="/search" role="search" aria-label="Site search">
+              <label class="o-header__visually-hidden" for="o-header-search-term-js">Search the <abbr title="Financial Times">FT</abbr></label>
+              <input class="o-header__search-term" id="o-header-search-term-js" name="q" type="text" placeholder="Search the FT"></input>
+              <button class="o-header__search-submit" type="submit">
+                Search
+              </button>
+              <button class="o-header__search-close" type="button" aria-controls="o-header-search-js">
+                <span class="o-header__visually-hidden">Close</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+
+        <nav id="o-header-nav-mobile" class="o-header__row o-header__nav o-header__nav--mobile" role="navigation">
+          <ul class="o-header__nav-list">
+            <li class="o-header__nav-item">
+              <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="true">Home</a>
+            </li>
+            <li class="o-header__nav-item">
+              <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="">FastFT</a>
+            </li>
+            <li class="o-header__nav-item">
+              <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="">Markets Data</a>
+            </li>
+          </ul>
+        </nav>
+
+        <nav id="o-header-nav-desktop" class="o-header__row o-header__nav o-header__nav--desktop" role="navigation">
+          <div class="o-header__container">
+            <ul class="o-header__nav-list o-header__nav-list--left">
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="true" id="o-header-link-">Home</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">World</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">UK</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Companies</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Markets</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Opinion</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Work &amp; Careers</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Life &amp; Arts</a>
+              </li>
+            </ul>
+            <ul class="o-header__nav-list o-header__nav-list--right">
+                <li class="o-header__nav-item">
+                  <a class="o-header__nav-link o-header__nav-link--utility" href="/login">Sign In</a>
+                </li>
+                <li class="o-header__nav-item">
+                  <a class="o-header__nav-button" href="/products">Subscribe</a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+
+      </header>
+
+      <script src="//origami-build.ft.com/v2/bundles/js?modules=o-header%406.0.3%3A%2Fdemos%2Fsrc%2Fmain.js%2Co-fonts%40%5E2.0.0"></script>
+    </template>
+
+    <template is="dom-if" if="[[megaMenu]]">
+      <header class="o-header" data-o-component="o-header" data-o-header--no-js="">
+        <div class="o-header__row o-header__anon">
+          <ul class="o-header__anon-list">
+            <li class="o-header__anon-item">
+              <a class="o-header__anon-link" href="#">Subscribe</a>
+            </li>
+            <li class="o-header__anon-item">
+              <a class="o-header__anon-link" href="#">Sign In</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="o-header__row o-header__top">
+          <div class="o-header__container">
+            <div class="o-header__top-wrapper">
+              <div class="o-header__top-column o-header__top-column--left">
+                <a href="#o-header-search" class="o-header__top-link o-header__top-link--search" aria-controls="o-header-search-js">
+                  <span class="o-header__top-link-label">Search</span>
+                </a>
+              </div>
+              <div class="o-header__top-column o-header__top-column--center">
+                <a class="o-header__top-logo" href="/" title="Go to Financial Times homepage">
+                  <span class="o-header__visually-hidden">Financial Times</span>
+                </a>
+              </div>
+              <div class="o-header__top-column o-header__top-column--right" role="navigation" aria-label="Account and personalisation links">
+                <a class="o-header__top-link o-header__top-link--myft" href="/myft">
+                  <span class="o-header__visually-hidden">myFT</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- To support both core and enhanced, duplicating the search row is necessary to avoid it flashing in enhanced -->
+        <!-- Pick only one of the two <div> if you don't need to support both core and enhanced -->
+        <div id="o-header-search" class="o-header__row o-header__search o--if-no-js" role="search">
+          <div class="o-header__container">
+            <form class="o-header__search-form" action="/search" role="search" aria-label="Site search">
+              <label class="o-header__visually-hidden" for="o-header-search-term">Search the <abbr title="Financial Times">FT</abbr></label>
+              <input class="o-header__search-term" id="o-header-search-term" name="q" type="text" placeholder="Search the FT"></input>
+              <button class="o-header__search-submit" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+        <div id="o-header-search-js" class="o-header__row o-header__search" role="search" data-o-header-search="">
+          <div class="o-header__container">
+            <form class="o-header__search-form" action="/search" role="search" aria-label="Site search">
+              <label class="o-header__visually-hidden" for="o-header-search-term-js">Search the <abbr title="Financial Times">FT</abbr></label>
+              <input class="o-header__search-term" id="o-header-search-term-js" name="q" type="text" placeholder="Search the FT"></input>
+              <button class="o-header__search-submit" type="submit">
+                Search
+              </button>
+              <button class="o-header__search-close" type="button" aria-controls="o-header-search-js">
+                <span class="o-header__visually-hidden">Close</span>
+              </button>
+            </form>
+          </div>
+        </div>
+        
+        <nav id="o-header-nav-mobile" class="o-header__row o-header__nav o-header__nav--mobile" role="navigation">
+          <ul class="o-header__nav-list">
+            <li class="o-header__nav-item">
+              <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="true">Home</a>
+            </li>
+            <li class="o-header__nav-item">
+              <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="">FastFT</a>
+            </li>
+            <li class="o-header__nav-item">
+              <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="">Markets Data</a>
+            </li>
+          </ul>
+        </nav>
+
+        <nav id="o-header-nav-desktop" class="o-header__row o-header__nav o-header__nav--desktop" role="navigation">
+          <div class="o-header__container">
+            <ul class="o-header__nav-list o-header__nav-list--left">
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="true" id="o-header-link-0">Home</a>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-1" aria-controls="o-header-mega-1">World</a>
+                <div class="o-header__mega" id="o-header-mega-1" role="group" aria-labelledby="o-header-link-1" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All World
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                World Economy
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                US
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Europe
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Latin America
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Asia Pacific
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Africa
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Middle East and Africa
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Emerging Markets
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Science &amp; Environment
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-2" aria-controls="o-header-mega-2">UK</a>
+                <div class="o-header__mega" id="o-header-mega-2" role="group" aria-labelledby="o-header-link-2" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All UK
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                UK Politics &amp; Policy
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                UK Economy
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                England
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Scotland
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Wales
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                N. Ireland
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-3" aria-controls="o-header-mega-3">Companies</a>
+                <div class="o-header__mega" id="o-header-mega-3" role="group" aria-labelledby="o-header-link-3" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All Companies
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Technology
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Financials
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Energy
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Retail &amp; Consumer
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Industrials
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Telecoms
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Health
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Media
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Transport
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-4" aria-controls="o-header-mega-4">Markets</a>
+                <div class="o-header__mega" id="o-header-mega-4" role="group" aria-labelledby="o-header-link-4" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All Markets
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Markets Data
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Commodities
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Currencies
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Equities
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Capital Markets
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Trading
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-5" aria-controls="o-header-mega-5">Opinion</a>
+                <div class="o-header__mega" id="o-header-mega-5" role="group" aria-labelledby="o-header-link-5" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All Opinion
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                FT View
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                The Big Read
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Lex
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Columnists
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-6" aria-controls="o-header-mega-6">Work &amp; Careers</a>
+                <div class="o-header__mega" id="o-header-mega-6" role="group" aria-labelledby="o-header-link-6" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All Work &amp; Career
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Business Education
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Management
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Entrepreneurship
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Recruitment
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Business Books
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="o-header__nav-item">
+                <a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-7" aria-controls="o-header-mega-7">Life &amp; Arts</a>
+                <div class="o-header__mega" id="o-header-mega-7" role="group" aria-labelledby="o-header-link-7" data-o-header-mega="">
+                  <div class="o-header__container">
+                    <div class="o-header__mega-wrapper">
+                      <div class="o-header__mega-column o-header__mega-column--subsections">
+                        <h3 class="o-header__mega-heading">
+                          Sub-sections
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                All Life &amp; Arts
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Magazine
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                House &amp; Home
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Books
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Food &amp; Drink
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Travel
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Style
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Arts
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Sports
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Music
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="" aria-selected="">
+                                Film, TV &amp; Radio
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="o-header__mega-column o-header__mega-column--articles">
+                        <h3 class="o-header__mega-heading">
+                          Top Stories
+                        </h3>
+                        <div class="o-header__mega-content">
+                          <ul class="o-header__mega-list">
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                The UK expats voting for Brexit no matter what the cost
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Lunch with the FT: Adair Turner
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                English carpenter who makes beehives that sell across the world
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                French ambassador urges UK to help shape a &#x2018;reformed Europe&#x2019;
+                              </a>
+                            </li>
+                            <li class="o-header__mega-item">
+                              <a class="o-header__mega-link" href="">
+                                Where do politicians live? How MPs across the world find city digs
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="o-header__nav-list o-header__nav-list--right">
+                <li class="o-header__nav-item">
+                  <a class="o-header__nav-link o-header__nav-link--utility" href="/login">Sign In</a>
+                </li>
+                <li class="o-header__nav-item">
+                  <a class="o-header__nav-button" href="/products">Subscribe</a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <script src="//origami-build.ft.com/v2/bundles/js?modules=o-header%406.0.3%3A%2Fdemos%2Fsrc%2Fmain.js%2Co-fonts%40%5E2.0.0"></script>
+    </template>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ig-header',
+
+      properties: {
+        megaMenu: Boolean,
+        header: Boolean
+      },
+
+      // Element Lifecycle
+
+      ready: function() {
+        // Only allow one header.
+        if (this.megaMenu && this.header) {
+          this.header = false;
+        } else if (!this.megaMenu && !this.header) {
+          this.header = true;
+        }
+      },
+
+      attached: function() {
+        // `attached` fires once the element and its parents have been inserted
+        // into a document.
+        //
+        // This is a good place to perform any work related to your element's
+        // visual state or active behavior (measuring sizes, beginning animations,
+        // loading resources, etc).
+      },
+
+      detached: function() {
+        // The analog to `attached`, `detached` fires when the element has been
+        // removed from a document.
+        //
+        // Use this to clean up anything you did in `attached`.
+      }
+    });
+  </script>
+</dom-module>
