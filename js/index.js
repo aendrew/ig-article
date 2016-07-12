@@ -1,1 +1,3 @@
-export default function igArticle(){};
+export default function igArticle(){
+
+};
