@@ -16,7 +16,8 @@
 			"name": "article",
 			"template": "demos/src/index.mustache",
 			"expanded": true,
-			"description": ""
+			"description": "",
+			"js": "main.js"
 		}
   ]
 }
