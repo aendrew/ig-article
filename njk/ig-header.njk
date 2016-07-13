@@ -1,0 +1,171 @@
+{# Initially copied from o-header version 6.1.0, constrained to ^6.1 #}
+<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=o-header%40%5E6.1.0%3A%2Fdemos%2Fsrc%2Fmain.js%2Co-fonts%40%5E2.0.0">
+<header class="o-header" data-o-component="o-header" data-o-header--no-js="">
+
+	<div class="o-header__row o-header__anon">
+		<ul class="o-header__anon-list">
+			<li class="o-header__anon-item">
+				<a class="o-header__anon-link" href="https://subscribe.ft.com/psp">Subscribe</a>
+			</li>
+			<li class="o-header__anon-item">
+				<a class="o-header__anon-link" href="https://accounts.ft.com/login">Sign In</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="o-header__row o-header__top">
+		<div class="o-header__container">
+			<div class="o-header__top-wrapper">
+				<div class="o-header__top-column o-header__top-column--left">
+					<a href="#o-header-search" class="o-header__top-link o-header__top-link--search" aria-controls="o-header-search-js">
+						<span class="o-header__top-link-label">Search</span>
+					</a>
+				</div>
+				<div class="o-header__top-column o-header__top-column--center">
+					<a class="o-header__top-logo" href="http://www.ft.com" title="Go to Financial Times homepage">
+						<span class="o-header__visually-hidden">Financial Times</span>
+					</a>
+				</div>
+        {# MyFT disabled until Next#}
+				{# <div class="o-header__top-column o-header__top-column--right" role="navigation" aria-label="Account and personalisation links">
+					<a class="o-header__top-link o-header__top-link--myft" href="/myft">
+						<span class="o-header__visually-hidden">myFT</span>
+					</a>
+				</div> #}
+			</div>
+		</div>
+	</div>
+
+	<!-- To support both core and enhanced, duplicating the search row is necessary to avoid it flashing in enhanced -->
+	<!-- Pick only one of the two <div> if you don't need to support both core and enhanced -->
+	<div id="o-header-search" class="o-header__row o-header__search o--if-no-js" role="search">
+		<div class="o-header__container">
+			<form class="o-header__search-form" action="http://search.ft.com/search" role="search" aria-label="Site search">
+				<label class="o-header__visually-hidden" for="o-header-search-term">Search the <abbr title="Financial Times">FT</abbr></label>
+				<input class="o-header__search-term" id="o-header-search-term" name="q" type="text" placeholder="Search the FT"></input>
+				<button class="o-header__search-submit" type="submit">
+					Search
+				</button>
+			</form>
+		</div>
+	</div>
+	<div id="o-header-search-js" class="o-header__row o-header__search" role="search" data-o-header-search="">
+		<div class="o-header__container">
+			<form class="o-header__search-form" action="http://search.ft.com/search" role="search" aria-label="Site search">
+				<label class="o-header__visually-hidden" for="o-header-search-term-js">Search the <abbr title="Financial Times">FT</abbr></label>
+				<input class="o-header__search-term" id="o-header-search-term-js" name="q" type="text" placeholder="Search the FT"></input>
+				<button class="o-header__search-submit" type="submit">
+					Search
+				</button>
+				<button class="o-header__search-close" type="button" aria-controls="o-header-search-js">
+					<span class="o-header__visually-hidden">Close</span>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<nav id="o-header-nav-mobile" class="o-header__row o-header__nav o-header__nav--mobile" role="navigation" aria-label="Main navigation">
+		<ul class="o-header__nav-list">
+			<li class="o-header__nav-item">
+				<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com" aria-selected="true">Home</a>
+			</li>
+			<li class="o-header__nav-item">
+				<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/fastft/" aria-selected="">FastFT</a>
+			</li>
+			<li class="o-header__nav-item">
+				<a class="o-header__nav-link o-header__nav-link--primary" href="http://markets.ft.com/" aria-selected="">Markets Data</a>
+			</li>
+		</ul>
+	</nav>
+
+	<nav id="o-header-nav-desktop" class="o-header__row o-header__nav o-header__nav--desktop" role="navigation" aria-label="Main navigation">
+		<div class="o-header__container">
+			<ul class="o-header__nav-list o-header__nav-list--left">
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com" aria-selected="true" id="o-header-link-">Home</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/world" aria-selected="" id="o-header-link-">World</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/uk" aria-selected="" id="o-header-link-">UK</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/companies" aria-selected="" id="o-header-link-">Companies</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/markets" aria-selected="" id="o-header-link-">Markets</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/opinion" aria-selected="" id="o-header-link-">Opinion</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/work" aria-selected="" id="o-header-link-">Work &amp; Careers</a>
+				</li>
+				<li class="o-header__nav-item">
+					<a class="o-header__nav-link o-header__nav-link--primary" href="http://www.ft.com/life-arts" aria-selected="" id="o-header-link-">Life &amp; Arts</a>
+				</li>
+			</ul>
+			<ul class="o-header__nav-list o-header__nav-list--right">
+					<li class="o-header__nav-item">
+						<a class="o-header__nav-link o-header__nav-link--utility" href="https://accounts.ft.com/login">Sign In</a>
+					</li>
+					<li class="o-header__nav-item">
+						<a class="o-header__nav-button" href="https://subscribe.ft.com/psp">Subscribe</a>
+					</li>
+			</ul>
+		</div>
+	</nav>
+
+  {% if subnav %}
+
+  <div class="o-header__subnav" role="navigation" aria-label="Sub navigation" data-o-header-subnav="">
+		<div class="o-header__container">
+			<div class="o-header__subnav-wrap-outside">
+				<div class="o-header__subnav-wrap-inside" data-o-header-subnav-wrapper="">
+					<div class="o-header__subnav-content">
+						<ol class="o-header__subnav-list o-header__subnav-list--breadcrumb" aria-label="Breadcrumb">
+              {% if subnav.parent %}
+
+							<li class="o-header__subnav-item">
+								<a class="o-header__subnav-link" href="{{ subnav.parent.url }}">
+									{{ subnav.parent }}
+								</a>
+							</li>
+
+              {% endif %}
+              {% if subnav.current %}
+
+							<li class="o-header__subnav-item">
+								<a class="o-header__subnav-link" href="{{ subnav.current.url }}" aria-selected="true" aria-label="Current page">
+									{{ subnav.current.name }}
+								</a>
+							</li>
+
+              {% endif %}
+						</ol>
+
+						<ul class="o-header__subnav-list o-header__subnav-list--children" aria-label="Subsections">
+              {% for item in subnav.subsections %}
+
+							<li class="o-header__subnav-item">
+								<a class="o-header__subnav-link" href="{{ item.url }}">
+									{{ item.name }}
+								</a>
+							</li>
+
+              { % endfor %}
+						</ul>
+					</div>
+				</div>
+				<button class="o-header__subnav-button o-header__subnav-button--left" aria-hidden="true" disabled></button>
+				<button class="o-header__subnav-button o-header__subnav-button--right" aria-hidden="true" disabled></button>
+			</div>
+		</div>
+	</div>
+
+  {% endif %}
+
+</header>
+
+<script src="//origami-build.ft.com/v2/bundles/js?modules=o-header%40%5E6.1.0%2Co-fonts%40%5E2.0.0"></script>
